@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-
+const Employee = require('./lib/Employee')
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
@@ -16,28 +16,29 @@ const createTeam = async () => {
         choices: ['yes', 'no']
     })
         if(ans.moreMembers === 'yes'){
-            inquirer.prompt({
+            const roleAns = await inquirer.prompt({
                 type: 'list', 
                 name: 'roleType',
                 message: "What role will this member fill?",
                 choices: ['manager', 'engineer', 'intern']
             })
-            .then((ans) => {
-                switch (ans.roleType) {
-                    case 'manager':
-                        generateManager();
-                        break;
-                    case 'engineer':
-                        generateEngineer();
-                        break;
-                    case 'intern':
-                        generateIntern();
-                        break;        
-                }
-            })
+            switch (roleAns.roleType) {
+                case 'manager':
+                    await generateManager();
+                    break;
+                case 'engineer':
+                    await generateEngineer();
+                    break;
+                case 'intern':
+                    await generateIntern();
+                    break;        
+            }
+            await createTeam();
         } else {
             console.log('okie dokie artichokie');
-            fs.writeFile('./dist/index.html', generateTeam(teamArr))
+            fs.writeFile('./dist/index.html', generateTeam(teamArr), (err) => {
+                if (err) throw err;
+            });
         }
 }
 
