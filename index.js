@@ -1,6 +1,8 @@
+// external imports
 const inquirer = require('inquirer');
 const fs = require('fs');
-const Employee = require('./lib/Employee')
+
+// internal imports
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
@@ -8,6 +10,7 @@ const generateTeam = require('./util/generateHtml');
 
 const teamArr = [];
 
+// main function generating team profiles
 const createTeam = async () => {
     const ans = await inquirer.prompt({
         type: 'list',
@@ -35,13 +38,14 @@ const createTeam = async () => {
             }
             await createTeam();
         } else {
-            console.log('okie dokie artichokie');
+            console.log("congrats on your new team profile html!");
             fs.writeFile('./dist/index.html', generateTeam(teamArr), (err) => {
                 if (err) throw err;
             });
         }
 }
 
+// function for generating a new manager
 const generateManager = async () => {
     const data = await inquirer.prompt([
         {
@@ -68,7 +72,7 @@ const generateManager = async () => {
         teamArr.push(new Manager(data.manager.name, data.manager.id, data.manager.email, data.manager.officeNum))
 }
 
-
+// function for generating a new engineer
 const generateEngineer = async () => {
    const data = await inquirer.prompt([
         {
@@ -95,6 +99,7 @@ const generateEngineer = async () => {
     teamArr.push(new Engineer(data.engineer.name, data.engineer.id, data.engineer.email, data.engineer.github))
 }
 
+// function for generating a new intern
 const generateIntern = async () => {
      const data = await inquirer.prompt([
         {
@@ -120,4 +125,6 @@ const generateIntern = async () => {
     ])
     teamArr.push(new Intern(data.intern.name, data.intern.id, data.intern.email, data.intern.school))
 }
+
+// calling the main function to start the app
 createTeam();
