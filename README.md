@@ -1,23 +1,16 @@
-# Object-Oriented Programming: Team Profile Generator
-<!--
+# Team Profile Generator
+
 ## Table of Contents
 
-- [Description](#description)
+- [Overview](#overview)
     - [User Story](#user-story)
     - [Acceptance Criteria](#acceptance-criteria)
 - [Technologies Used](#technologies-used)
 - [Usage](#usage)
+    - [Screenshot](#screenshot)
 - [License](#license)
 
-## Description
-
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
--->
+## Overview
 
 ### User Story
 
@@ -49,19 +42,25 @@ WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated
 ```
 
-<!--
+
 ## Technologies Used
 
 <ul>
 <li>HTML
 <li>CSS
 <li>JavaScript
-<li>
-<li>
+<li>Node
+<li>Inquirer
+<li>Jest
+</ul>
 
 ## Usage
 
-Video Demo: 
+Video Demo: https://drive.google.com/file/d/1a4RjZgkGvl9Nbh-WshhAjL-ie2fR-K_g/view?usp=sharing
+
+### Screenshot 
+
+![screenshot of generated html](./util/images/screenshot.png)
 
 ## License
 
@@ -69,4 +68,6 @@ Please refer to the LICENSE in the repo.
 
 ## Links
 
--->
+Inquirer Docs: https://www.npmjs.com/package/inquirer
+
+Jest Docs: https://jestjs.io/docs/getting-started
